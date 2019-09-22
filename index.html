@@ -33,6 +33,13 @@
 
     </div>
     <script>
+        function htmlEncode(html) {
+            var temp = document.createElement('div');
+            (temp.textContent != undefined) ? (temp.textContent = html) : (temp.innerText = html); //看不懂
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        }
         var input = document.querySelector('input');
         var ul = document.querySelector('ul');
         var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
@@ -116,7 +123,7 @@
             // 拿到input输入框的输入内容trim后返回
 
 
-            username = input.value.trim();
+            username = htmlEncode(input.value).trim();
 
         }
 
